@@ -4,6 +4,11 @@ This role enables or disables motd_news on ubuntu systems.
 
 Ubuntu's motd_news unfortunately is quite persistent when you try to disable or remove it, so this role tries to provide a way to disable it in the way it was apparently intended.
 
+## Badges
+
+![Ansible Role Workflow Status Badge](https://github.com/marauderxtreme/ansible-role-motd-news/workflows/Ansible%20Role/badge.svg)
+![Markdownlint Workflow Status Badge](https://github.com/marauderxtreme/ansible-role-motd-news/workflows/Markdownlint/badge.svg)
+
 ## Role Variables
 
 The following variables are available and set to following the following defaults in `defaults/main.yml`

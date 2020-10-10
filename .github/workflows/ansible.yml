@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
-          path: marauderxtreme.motd_news
+          path: motd_news
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -24,8 +24,8 @@ jobs:
           docker_channel: stable
       - name: Install dependencies
         run: pip install molecule ansible-lint docker
-      - name: Run molecule test for ${{ matrix.molecule_distro }}
-        working-directory: marauderxtreme.motd_news
+      - name: Run molecule lint
+        working-directory: motd_news
         run: MOLECULE_DISTRO=${{ matrix.molecule_distro }} molecule lint
   test:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
-          path: marauderxtreme.motd_news
+          path: motd_news
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -51,5 +51,5 @@ jobs:
       - name: Install dependencies
         run: pip install molecule ansible-lint docker
       - name: Run molecule test for ${{ matrix.molecule_distro }}
-        working-directory: marauderxtreme.motd_news
+        working-directory: motd_news
         run: MOLECULE_DISTRO=${{ matrix.molecule_distro }} molecule test

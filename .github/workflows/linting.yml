@@ -19,3 +19,8 @@ jobs:
         with:
           yamllint_strict: true
           yamllint_config_filepath: ".yamllint"
+      - name: Ansible Lint
+        uses: ansible/ansible-lint-action@master
+        with:
+          override-deps: |
+            ansible-lint==4.3.5

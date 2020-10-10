@@ -1,0 +1,66 @@
+---
+# tasks file for motd_news
+
+- name: Enable motd-news
+  block:
+
+  - name: Set motd-news state
+    set_fact:
+      motd_news_enabled=1
+
+  - name: Enable the motd-news in /etc/default/motd-news
+    template:
+      src: motd-news.j2
+      dest: /etc/default/motd-news
+      mode: "0644"
+      owner: root
+      group: root
+
+  - name: Start and enable the motd-news.timer
+    service:
+      name: motd-news.timer
+      state: started
+      enabled: yes
+
+  - name: Ensure that the cache file exists
+    copy:
+      content: ""
+      dest: /var/cache/motd-news
+      force: no
+      mode: "0644"
+      owner: root
+      group: root
+
+  when: motd_news_enable
+
+- name: Disable motd-news and clear cache
+  block:
+
+  - name: Set motd-news state
+    set_fact:
+      motd_news_enabled=0
+
+  - name: Disable the motd-news in /etc/default/motd-news
+    template:
+      src: motd-news.j2
+      dest: /etc/default/motd-news
+      mode: "0644"
+      owner: root
+      group: root
+
+  - name: Stop and disable the motd-news.timer
+    service:
+      name: motd-news.timer
+      state: stopped
+      enabled: no
+
+  - name: Clean Cache
+    copy:
+      content: ""
+      dest: /var/cache/motd-news
+      force: yes
+      mode: "0644"
+      owner: root
+      group: root
+
+  when: not motd_news_enable

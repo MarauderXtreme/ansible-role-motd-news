@@ -1,0 +1,12 @@
+galaxy_info:
+  author: Christoph Kepler <development@kepler.international>
+  description: En-/Disables motd_news on Ubuntu
+  license: MIT
+  min_ansible_version: 1.2
+  platforms:
+    - name: Ubuntu
+      versions:
+        - any
+  galaxy_tags:
+    - motd
+    - news

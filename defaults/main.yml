@@ -1,0 +1,6 @@
+---
+# defaults file for motd_news
+
+motd_news_enable: false
+motd_news_urls: https://motd.ubuntu.com
+motd_news_wait: 5

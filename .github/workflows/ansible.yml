@@ -1,0 +1,49 @@
+---
+
+name: Ansible Role
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - name: Set up docker
+        uses: docker-practice/actions-setup-docker@1.0.2
+        with:
+          docker_channel: stable
+      - name: Install dependencies
+        run: pip install molecule ansible-lint docker
+      - name: Run molecule test for ${{ matrix.molecule_distro }}
+        run: MOLECULE_DISTRO=${{ matrix.molecule_distro }} molecule lint
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        molecule_distro:
+          - ubuntu2004
+          - ubuntu1804
+          - ubuntu1604
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - name: Set up docker
+        uses: docker-practice/actions-setup-docker@1.0.2
+        with:
+          docker_channel: stable
+      - name: Install dependencies
+        run: pip install molecule ansible-lint docker
+      - name: Run molecule test for ${{ matrix.molecule_distro }}
+        run: MOLECULE_DISTRO=${{ matrix.molecule_distro }} molecule test

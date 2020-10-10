@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: motd_news
   author: Christoph Kepler <development@kepler.international>
   description: En-/Disables motd_news on Ubuntu
   license: MIT

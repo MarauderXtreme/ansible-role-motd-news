@@ -1,4 +1,6 @@
-name: Run markdownlint
+---
+
+name: Run Linting
 
 on:
   - push

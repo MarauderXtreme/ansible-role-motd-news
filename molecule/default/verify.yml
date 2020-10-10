@@ -24,7 +24,7 @@
 
     - name: Assert that cache file is empty
       assert:
-        that: motd_news_cache['content'] == ""
+        that: motd_news_cache['content'] | length == 0
 
     - name: Check if motd-news is disabled in config
       lineinfile:

@@ -6,8 +6,8 @@ Ubuntu's motd_news unfortunately is quite persistent when you try to disable or 
 
 ## Badges
 
-![Ansible Role Workflow Status Badge](https://github.com/marauderxtreme/ansible-role-motd-news/workflows/Ansible%20Role/badge.svg)
-![Markdownlint Workflow Status Badge](https://github.com/marauderxtreme/ansible-role-motd-news/workflows/Markdownlint/badge.svg)
+[![Ansible Role Workflow Status Badge](https://github.com/marauderxtreme/ansible-role-motd-news/workflows/Ansible%20Role/badge.svg "Ansible Role Workflow Status")](https://github.com/MarauderXtreme/ansible-role-motd-news/actions?query=workflow%3A%22Ansible+Role%22)
+[![Markdownlint Workflow Status Badge](https://github.com/marauderxtreme/ansible-role-motd-news/workflows/Markdownlint/badge.svg "Markdownlint Workflow Status")](https://github.com/MarauderXtreme/ansible-role-motd-news/actions?query=workflow%3AMarkdownlint)
 
 ## Role Variables
 

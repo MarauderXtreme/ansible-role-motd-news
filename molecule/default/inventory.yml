@@ -1,0 +1,5 @@
+all:
+  hosts:
+    motd-news-default: {}
+    motd-news-enable:
+      motd_news_enable: true

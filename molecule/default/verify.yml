@@ -1,0 +1,74 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify default behaviour
+  hosts: motd-news-default
+  tasks:
+
+    - name: Check if motd-news.timer is not running and disabled
+      service:
+        name: motd-news.timer
+        state: stopped
+        enabled: no
+      register: motd_news_timer
+      check_mode: yes
+
+    - name: Assert motd-news.timer not running
+      assert:
+        that: not motd_news_timer.changed
+
+    - name: Check if cache file is empty
+      slurp:
+        src: /var/cache/motd-news
+      register: motd_news_cache
+
+    - name: Assert that cache file is empty
+      assert:
+        that: motd_news_cache['content'] == ""
+
+    - name: Check if motd-news is disabled in config
+      lineinfile:
+        path: /etc/default/motd-news
+        line: "ENABLED=0"
+      register: motd_news_config
+      check_mode: yes
+
+    - name: Assert if motd_news is disabled via config
+      assert:
+        that: not motd_news_config.changed
+
+- name: Verify enable behaviour
+  hosts: motd-news-enable
+  tasks:
+
+    - name: Check if motd-news.timer is not running and disabled
+      service:
+        name: motd-news.timer
+        state: started
+        enabled: yes
+      register: motd_news_timer
+      check_mode: yes
+
+    - name: Assert motd-news.timer is running
+      assert:
+        that: not motd_news_timer.changed
+
+    - name: Check if cache file exists
+      stat:
+        path: /var/cache/motd-news
+      register: motd_news_cache
+
+    - name: Assert that cache file exists
+      assert:
+        that: motd_news_cache.stat.exists
+
+    - name: Check if motd-news is enabled in config
+      lineinfile:
+        path: /etc/default/motd-news
+        line: "ENABLED=1"
+      register: motd_news_config
+      check_mode: yes
+
+    - name: Assert if motd_news is disabled via config
+      assert:
+        that: not motd_news_config.changed

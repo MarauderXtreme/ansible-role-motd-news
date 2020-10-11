@@ -1,0 +1,66 @@
+---
+
+name: Check and publish new version
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          path: motd_news
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - name: Set up docker
+        uses: docker-practice/actions-setup-docker@1.0.2
+        with:
+          docker_channel: stable
+      - name: Install dependencies
+        run: pip install molecule ansible-lint docker
+      - name: Run molecule lint
+        working-directory: motd_news
+        run: molecule lint
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        molecule_distro:
+          - ubuntu2004
+          - ubuntu1804
+          - ubuntu1604
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          path: motd_news
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - name: Set up docker
+        uses: docker-practice/actions-setup-docker@1.0.2
+        with:
+          docker_channel: stable
+      - name: Install dependencies
+        run: pip install molecule ansible-lint docker
+      - name: Run molecule test for ${{ matrix.molecule_distro }}
+        working-directory: motd_news
+        run: MOLECULE_DISTRO=${{ matrix.molecule_distro }} molecule test
+  publish:
+    needs:
+      - lint
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish Ansible role to Galaxy
+        uses: robertdebock/galaxy-action@1.0.3
+        with:
+          galaxy_api_key: ${{ secrets.galaxy_api_key }}

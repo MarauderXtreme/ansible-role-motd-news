@@ -6,12 +6,12 @@ Ubuntu's motd_news unfortunately is quite persistent when you try to disable or 
 
 ## Badges
 
-[![Ansible Role Workflow Status Badge](https://github.com/marauderxtreme/ansible-role-motd-news/workflows/Ansible%20Role/badge.svg "Ansible Role Workflow Status")](https://github.com/MarauderXtreme/ansible-role-motd-news/actions?query=workflow%3A%22Ansible+Role%22)
-[![Markdownlint Workflow Status Badge](https://github.com/marauderxtreme/ansible-role-motd-news/workflows/Markdownlint/badge.svg "Markdownlint Workflow Status")](https://github.com/MarauderXtreme/ansible-role-motd-news/actions?query=workflow%3AMarkdownlint)
-![Ansible Quality Score](https://img.shields.io/ansible/quality/51225?label=Galaxy%20Quality%20Score&logo=ansible&labelColor=343b43&logoColor=959da5)
-![Ansible Role Downloads](https://img.shields.io/ansible/role/d/51225?label=Galaxy%20Downloads&logo=ansible&labelColor=343b43&logoColor=959da5)
+[![Ansible Role Workflow Status](https://img.shields.io/github/workflow/status/marauderxtreme/ansible-role-motd-news/Ansible%20Role?label=Ansible-Role&logo=github "Ansible Role Workflow Status")](https://github.com/MarauderXtreme/ansible-role-motd-news/actions?query=workflow%3A%22Ansible+Role%22)
+[![Markdownlint Workflow Status Badge](https://img.shields.io/github/workflow/status/marauderxtreme/ansible-role-motd-news/Markdownlint?label=Markdownlint&logo=github "Markdownlint Workflow Status")](https://github.com/MarauderXtreme/ansible-role-motd-news/actions?query=workflow%3AMarkdownlint)
+![Ansible Quality Score](https://img.shields.io/ansible/quality/51225?label=Galaxy%20Quality%20Score&logo=ansible)
+![Ansible Role Downloads](https://img.shields.io/ansible/role/d/51225?label=Galaxy%20Downloads&logo=ansible)
 
-![Ansible Role](https://img.shields.io/ansible/role/51225?label=ansible-galaxy%20install&logo=ansible&labelColor=343b43&logoColor=959da5&link=https://galaxy.ansible.com/marauderxtreme/motd_news)
+[![Ansible Role](https://img.shields.io/ansible/role/51225?label=ansible-galaxy%20install&logo=ansible)](https://galaxy.ansible.com/marauderxtreme/motd_news)
 
 ## Role Variables
 
